@@ -70,7 +70,8 @@ img {
     border-radius: 50%;
     box-shadow: 5px 5px 10px;
     transition: all ease-in-out 1s;
-    
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 img:hover{
     transform: scale(1.2);
