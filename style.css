@@ -14,12 +14,19 @@ p {
     padding: 70px;
     padding-top: 0;
     padding-bottom: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 ul {
     list-style-type:none;
 }
 li {
     padding-top: 10px;
+    
+}
+
+a {
+    color: rgb(133, 33, 33);
+    text-decoration: none;
 }
 
 body {
@@ -31,6 +38,8 @@ body {
 
 footer {
     padding: 10px;
+    padding-top: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 header {
@@ -44,8 +53,19 @@ main {
 
 h1 {
     margin: 0;
+    padding: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 img {
     width: 40%;
+}
+
+a:hover{
+    color: blue
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 0;
 }
