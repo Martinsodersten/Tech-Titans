@@ -1,20 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
 .content-container
 {
-  display:flex ;
+  display: flex;
   flex-direction: row;
 }
-footer, h1, h2, p{
+footer, h1 {
     text-align: center;
-
 }
 p {
-    padding: 30px;
+    padding: 70px;
     padding-top: 0;
+    padding-bottom: 0;
 }
 ul {
     list-style-type:none;
 }
-li
-{
+li {
     padding-top: 10px;
+}
+
+body {
+    border: 10px solid black;
+    border-radius: 5px;
+    width: 500px;
+    margin: 10px auto;
+}
+
+footer {
+    padding: 10px;
+}
+
+header {
+    background-color: rgb(218, 47, 47);
+    margin: 0;
+}
+
+main {
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+img {
+    width: 40%;
 }
