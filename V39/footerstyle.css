@@ -5,12 +5,13 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 30px;
+    margin-top: 30px;
 }
 
 footer a{
     text-decoration: none;
     color: black;
-    font-weight: 800;
+    font-weight: 600;
 }
 footer a:hover {
     text-decoration: underline 2px black;
@@ -36,6 +37,9 @@ footer a:hover {
  font-size: 14px;
 }
 
+footer h3 img {
+    margin-right: 5px;
+}
 .footer-content {
     display: flex;
     gap: 60px;
@@ -45,7 +49,7 @@ footer a:hover {
 .help-links, .contact-links, .app-links{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .copyright-section {
