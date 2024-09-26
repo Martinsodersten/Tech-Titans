@@ -1,15 +1,22 @@
 :root{
-    --primary: lightgrey;
+    --primary: rgb(247, 244, 244);
+    --secondary:rgb(233, 233, 233);
 }
 html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
     margin: 0;
+    height: 200vh;
+    padding-top: 6rem;
 }
 nav{
     background-color: var(--primary);
     padding:1.2rem;
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
 }
 
 nav ul{
@@ -17,8 +24,9 @@ nav ul{
     justify-content: center;
     list-style: none;
     margin:0;
-    padding: 0;
+    padding: .5rem;
     gap: 1rem;
+    align-items: center;
 }
 .link-home{
     margin-right: auto;
@@ -35,8 +43,19 @@ nav ul{
     font-weight: normal;
 
 }
-nav a{
+nav li a{
     text-decoration: none;
     color: black;
     font-weight: bold;
+    padding:.8rem;
+    border-radius: 5px;
+    display: flex;
+    gap: .6rem;
+    
+}
+nav li a:hover{
+    background-color: var(--secondary);
+}
+nav li .icon {
+    font-size: 1.5rem;
 }
