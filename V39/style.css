@@ -1,0 +1,13 @@
+nav ul{
+    display: flex;
+    justify-content: center;
+
+}
+.link-home{
+    margin-right: auto;
+
+}
+.link-login{
+    margin-left: auto;
+    
+}
