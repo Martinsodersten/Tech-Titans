@@ -1,0 +1,34 @@
+:root{
+    --primary: lightgrey;
+}
+body{
+    
+}
+nav{
+    background-color: var(--primary);
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin:0;
+    padding: 0;
+    gap: 1rem;
+}
+.link-home{
+    margin-right: auto;
+
+}
+.link-login{
+    margin-left: auto;
+}
+.link-login a{
+    font-weight: normal;
+
+}
+nav a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
