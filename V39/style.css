@@ -24,6 +24,10 @@ nav ul{
     margin-right: auto;
 
 }
+
+.link-home img {
+    width: 6rem;
+}
 .link-login{
     margin-left: auto;
 }
