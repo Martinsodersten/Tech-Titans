@@ -32,9 +32,13 @@ nav ul{
     margin-right: auto;
 
 }
+.link-home a:hover{
+    background: none;
+
+}
 
 .link-home img {
-    width: 6rem;
+    width: 7rem;
 }
 .link-login{
     margin-left: auto;
@@ -47,10 +51,11 @@ nav li a{
     text-decoration: none;
     color: black;
     font-weight: bold;
-    padding:.8rem;
+    padding:.4rem .8rem;
     border-radius: 5px;
     display: flex;
     gap: .6rem;
+    align-items: center;
     
 }
 nav li a:hover{
