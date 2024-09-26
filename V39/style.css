@@ -75,6 +75,7 @@ nav li .icon {
     padding:5rem;
     color: white;
     position: relative;
+    font-size: 1.2rem;
 
 }
 .hero::after{
@@ -89,4 +90,16 @@ opacity: 0.4;
 }
 .hero *{
     z-index: 10;
+}
+.hero .title{
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin:0;
+}
+.hero .cta{
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 7px;
 }
