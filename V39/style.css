@@ -110,3 +110,64 @@ opacity: 0.4;
     padding: 1rem 2rem;
     border-radius: 7px;
 }
+
+.cars-section {
+    padding: 60px;
+}
+
+.services {
+    display: flex;
+    gap: 22px;
+}
+
+.services a div{
+    height: 100%
+}
+
+.services .service {
+    text-decoration: none;
+    color: black;
+}
+
+.services .service h3 {
+    padding-bottom: 15px;
+}
+
+.services .service div {
+    background-color: var(--primary);
+    padding: 10px 10px;
+}
+
+.news {
+    display: flex;
+    gap: 20px;
+    padding: 100px 0;
+}
+
+.news img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.news > div {
+    flex: 1;
+    
+}
+
+.news h3 {
+    padding: 15px 0;
+}
+
+.link {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: 3px underline black;
+}
+
