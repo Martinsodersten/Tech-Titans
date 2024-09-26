@@ -1,6 +1,17 @@
 :root{
     --primary: lightgrey;
 }
+
+
+body {
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body{
     
 }
@@ -32,3 +43,33 @@ nav a{
     color: black;
     font-weight: bold;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-content {
+    display: flex;
+    gap: 60px;
+    
+}
+
+.help-links, .contact-links, .app-links{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyright-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.media-icons, .list, .copyright-text 
+
