@@ -1,3 +1,5 @@
+@import url(card.css);
+
 :root{
     --tablet: 770px;
     --desktop: 1230px;
