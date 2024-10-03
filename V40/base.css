@@ -1,0 +1,22 @@
+:root{
+    --primary: rgb(74, 21, 75);
+    --primary-light: rgb(236, 222, 236);
+    --primary-dark: rgba(74, 21, 75, 0.548);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto", system-ui;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
