@@ -3,10 +3,9 @@ body {
 }
 
 .card {
-  width: 80%;
-  max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 4rem;
   background-color: white;
   border-radius: 1rem;
   border: 0.4rem solid rgba(0, 0, 0, 0.3);
@@ -44,28 +43,33 @@ body {
 
 .btn {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
   grid-area: button;
-  margin: 1.5rem 1rem;
+  margin: 1.5rem auto;
   padding: 1.5rem;
   border-radius: 0.5rem;
   background-color: var(--primary);
-
   width: 90%;
-  margin-right: auto;
-
-  margin-left: auto;
+  transition: all .4s ease;
+}
+.btn:hover {
+  background-color: var(--primary-dark);
 }
 .btn--light {
   background-color: white;
-  border: 1px solid var(--primary);
+  box-shadow: inset 0px 0px 0px 1px var(--primary);
+}
+.btn--light:hover {
+  background-color: white;
+  box-shadow: inset 0px 0px 0px 2px var(--primary);
 }
 .btn a {
   text-decoration: none;
   color: white;
   font-weight: 500;
   font-size: 1.75rem;
+}
+.btn a:hover {
+  text-decoration: none;
 }
 .btn--light a {
   color: var(--primary);

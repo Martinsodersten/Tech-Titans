@@ -1,3 +1,5 @@
+@import url(main.css);
+@import url(header.css);
 @import url(card.css);
 
 :root{
@@ -5,7 +7,8 @@
     --desktop: 1230px;
     --primary: rgb(74, 21, 75);
     --primary-light: rgb(236, 222, 236);
-    --primary-dark: rgba(74, 21, 75, 0.548);
+    --primary-dark: rgb(46, 12, 47);
+    --secondary: #36c5f0;
 }
 
 * {
@@ -21,6 +24,5 @@ html {
 
 body {
     font-size: 1.6rem;
+    background-color: var(--primary);
 }
-
-
