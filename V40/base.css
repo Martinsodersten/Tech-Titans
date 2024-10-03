@@ -1,9 +1,10 @@
 :root{
+    --tablet: 770px;
+    --desktop: 1230px;
     --primary: rgb(74, 21, 75);
     --primary-light: rgb(236, 222, 236);
     --primary-dark: rgba(74, 21, 75, 0.548);
 }
-
 
 * {
     margin: 0;
