@@ -34,16 +34,17 @@ body {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    border: 1px solid white;
     border-radius: 3px;
     padding: 1.3rem 1.7rem;
     font-weight: 500;
     font-size: 1.4rem;
     letter-spacing: 0.1rem;
+    box-shadow: inset 0px 0px 0px 1px white;
+    transition: box-shadow 0.42s ease;
 }
 
 .header__button a:hover {
-    box-shadow: inset 0px 0px 0px 1px white;
+    box-shadow: inset 0px 0px 0px 2px white;
 
 }
 
