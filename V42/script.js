@@ -15,8 +15,6 @@ submitButton.addEventListener("click", function (clickEvent) {
     const amountPerPerson = calcAmountPerPerson(totalSum.value, dricksAmount.value, friendsAmount.value)
 
     const charityValue = (amountPerPerson * friendsAmount.value) - (totalSum.value * (dricksAmount.value / 100 + 1))
-    
-    console.log(amountPerPerson, charityValue)
 
     form.style.display = "none";
     paymentWrapper.style.display = "flex"
