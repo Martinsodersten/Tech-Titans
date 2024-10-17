@@ -12,3 +12,18 @@ button {
     display: none;
     flex-direction: column;
 }
+.header {
+    width: min-content;
+    animation: spinny 5s ease-in-out infinite;
+}
+
+@keyframes spinny {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(900deg);
+    }
+
+    
+}
