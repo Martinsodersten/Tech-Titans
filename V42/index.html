@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Splitta notan</h1>
+
+    <form id="form">
+      <label>Antal vänner:</label>
+      <input type="number" min="0" id="friendsAmount" />
+      <label>Total summan:</label><input type="number" min="0" id="totalSum" />
+      <label>Dricks:</label><input type="text" min="0" id="dricksAmount" />
+      <button type="submit" id="submitButton">Beräkna</button>
+    </form>
+    <div class="paymentWrapper" id="paymentWrapper">
+      <div class="payment">
+        <p>Varje person ska betala:</p>
+        <p id="payAmount"></p>
+      </div>
+      <div class="charity">
+        <p>Resterande skänks till välgörenhet</p>
+        <p id="charityAmount"></p>
+      </div>
+    </div>
+  </body>
+</html>

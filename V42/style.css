@@ -1,0 +1,13 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: 0 auto;
+    gap:0.3rem;
+}
+button {
+    margin: 1rem;
+}
+.paymentWrapper {
+    display: none;
+}
