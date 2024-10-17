@@ -10,4 +10,5 @@ button {
 }
 .paymentWrapper {
     display: none;
+    flex-direction: column;
 }
