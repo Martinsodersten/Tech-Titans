@@ -4,7 +4,6 @@ const list = document.querySelector('.todo-list');
 const addBtn = document.querySelector('.add-btn');
 const input = document.querySelector('.todo-input');
 
-let id = 0;
 
 let todos = [
     {
@@ -24,6 +23,8 @@ let todos = [
     }
 ];
 
+let idCounter = todos.length;
+
 function renderList() {
     list.innerHTML = '';
     todos.forEach(todo => {
@@ -34,9 +35,11 @@ function renderList() {
     });
 }
 
+// Add todo
 addBtn.addEventListener('click', function(){
+    idCounter++;
     const todo = {
-        id: todos.length + 1,
+        id: idCounter,
         task: input.value,
         completed: false,
     }
@@ -49,6 +52,7 @@ addBtn.addEventListener('click', function(){
 
 document.querySelector('body').addEventListener('click', function(event){
 
+    // Complete todo
     if(event.target.closest('.todo-content')) {
         const target = event.target.closest('.todo-content');
         const id = target.parentElement.id;
@@ -63,7 +67,9 @@ document.querySelector('body').addEventListener('click', function(event){
         // }
 
         renderList();
-    } else if (event.target.closest('.remove-btn')) {
+    }
+    // Remove todo
+    else if (event.target.closest('.remove-btn')) {
         const target = event.target.closest('.remove-btn');
         const id = target.parentElement.id;
 
