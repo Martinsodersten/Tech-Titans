@@ -70,8 +70,12 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
+.todo-content {
+    margin-right: auto;
+}
+
 .remove-btn {
-    margin-left: auto;
+    cursor: pointer;
 }
 
 .completed {

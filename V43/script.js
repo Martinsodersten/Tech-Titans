@@ -1,15 +1,16 @@
 'use strict';
 
 const list = document.querySelector('.todo-list');
-
 const addBtn = document.querySelector('.add-btn');
 const input = document.querySelector('.todo-input');
 
-const todos = [
+let id = 0;
+
+let todos = [
     {
         id: 1,
         task: 'Mata hunden',
-        completed: false,
+        completed: true,
     },
     {
         id: 2,
@@ -27,14 +28,11 @@ function renderList() {
     list.innerHTML = '';
     todos.forEach(todo => {
         list.innerHTML += `<li class="todo-item" id="${todo.id}">
-                        <span class="todo-content ${todo.completed ? 'completed' : ''}">${todo.task}</span> 
+                        <span class="todo-content ${todo.completed ? 'completed' : ''}">${todo.task}</span>
                         <span class="remove-btn">❌</span>
                     </li>`;
-        
     });
-    
-}      
-renderList()
+}
 
 addBtn.addEventListener('click', function(){
     const todo = {
@@ -47,27 +45,35 @@ addBtn.addEventListener('click', function(){
     renderList()
 
     input.value = '';
-})
+});
 
 document.querySelector('body').addEventListener('click', function(event){
-    const target = event.target.closest('.todo-item');
-    if(target) {
-        const id = target.id;
+
+    if(event.target.closest('.todo-content')) {
+        const target = event.target.closest('.todo-content');
+        const id = target.parentElement.id;
         const arrayItem = todos.find(todo => todo.id == id);
-        const label = target.querySelector('.todo-content');
-        if(arrayItem.completed == false) {
-            arrayItem.completed = true;
-            label.classList.add('completed');
-        } else {
-            arrayItem.completed = false;
-            label.classList.remove('completed');
-        }
+
+        arrayItem.completed = !arrayItem.completed;
+
+        // if(arrayItem.completed == false) {
+        //     arrayItem.completed = true;
+        // } else {
+        //     arrayItem.completed = false;
+        // }
+
+        renderList();
+    } else if (event.target.closest('.remove-btn')) {
+        const target = event.target.closest('.remove-btn');
+        const id = target.parentElement.id;
+
+        todos = todos.filter(todo => todo.id != id);
+        console.log(todos);
+        renderList();
     }
-})
-                
-                
-                
-                
+});
+
+renderList();
 
 
 
