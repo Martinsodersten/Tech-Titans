@@ -71,7 +71,7 @@ h1 {
 }
 
 .todo-content {
-    margin-right: auto;
+    flex: 1;
 }
 
 .remove-btn {
