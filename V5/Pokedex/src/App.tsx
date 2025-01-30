@@ -20,25 +20,31 @@ const pokemons: Pokemon[] = [
 ];
 
 function App() {
-  return <Pokedex pokemons={pokemons}/>;
+  return <Pokedex pokemons={pokemons} />;
 }
 
-function Pokedex(pokemons: Pokemon[]) {
+function Pokedex({ pokemons }: { pokemons: Pokemon[] }) {
   return (
     <div>
       <h2>POKEDEX</h2>
-      {pokemons.map((pokemon) => <PokeCard pokeData={pokemon} />)}
+      {pokemons.map((pokemon) => (
+        <PokeCard pokeData={pokemon} />
+      ))}
       <div>Total experience: </div>
     </div>
   );
 }
 
-function PokeCard({id, name, type, base_experience}: Pokemon) {
+function PokeCard({
+  pokeData: { id, name, type, base_experience },
+}: {
+  pokeData: Pokemon;
+}) {
   return (
     <article>
       <div>{name}</div>
       <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/>${id}.png`}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
         alt="Pokemon img"
       />
       <div>Type: {type}</div>
