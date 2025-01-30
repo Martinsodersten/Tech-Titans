@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+
+type Pokemon = {
+  id: number;
+  name: string;
+  type: string;
+  base_experience: number;
+};
+
+const pokemons: Pokemon[] = [
+  { id: 4, name: "Charmander", type: "fire", base_experience: 62 },
+  { id: 7, name: "Squirtle", type: "water", base_experience: 63 },
+  { id: 11, name: "Metapod", type: "bug", base_experience: 72 },
+  { id: 12, name: "Butterfree", type: "flying", base_experience: 178 },
+  { id: 25, name: "Pikachu", type: "electric", base_experience: 112 },
+  { id: 39, name: "Jigglypuff", type: "normal", base_experience: 95 },
+  { id: 94, name: "Gengar", type: "poison", base_experience: 225 },
+  { id: 133, name: "Eevee", type: "normal", base_experience: 65 },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  return <Pokedex pokemons={pokemons}/>;
 }
 
-export default App
+function Pokedex(pokemons: Pokemon[]) {
+  return (
+    <div>
+      <h2>POKEDEX</h2>
+      {pokemons.map((pokemon) => <PokeCard pokeData={pokemon} />)}
+      <div>Total experience: </div>
+    </div>
+  );
+}
+
+function PokeCard({id, name, type, base_experience}: Pokemon) {
+  return (
+    <article>
+      <div>{name}</div>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/>${id}.png`}
+        alt="Pokemon img"
+      />
+      <div>Type: {type}</div>
+      <div>EXP: {base_experience}</div>
+    </article>
+  );
+}
+
+export default App;
