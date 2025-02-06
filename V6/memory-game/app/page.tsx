@@ -1,5 +1,5 @@
 "use client";
-
+import "./styles.css";
 import React, { useState, useEffect } from "react";
 import CardType from "./types/CardType";
 import Card from "./components/Card";
@@ -55,14 +55,14 @@ export default function Home() {
               : tempCard
           );
 
-         setTimeout(() => setCardDeck(tempDeck), 500)
+         setTimeout(() => setCardDeck(tempDeck), 1000)
 
       }
       setCheckedCards({firstCard: null, secondCard: null})
     }
   }, [checkedCards])
 
-  const clickEvent = (card: CardType) => {
+  const clickEvent = (card: CardType, e:HTMLDivElement) => {
     if (card.revealed == false) {
       let tempDeck = [...cardDeck];
       tempDeck = tempDeck.map((tempCard) => {
@@ -70,6 +70,7 @@ export default function Home() {
           tempCard.revealed = !tempCard.revealed;
         return tempCard;
       });
+      console.log(e)
       setCardDeck(tempDeck);
       if(!checkedCards.firstCard) {
         console.log(card)
