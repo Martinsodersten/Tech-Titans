@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import { Pokedex } from "./Pokedex";
 
-type Pokemon = {
+export type Pokemon = {
   id: number;
   name: string;
   type: string;
@@ -47,44 +48,6 @@ function App() {
       <Pokedex pokemons={pokedex1} totalExp={pd1Exp} winner={pd1Exp > pd2Exp}/>
       <Pokedex pokemons={tempPokemons} totalExp={pd2Exp} winner={pd2Exp > pd1Exp}/>
     </>
-  );
-}
-
-function Pokedex({ pokemons, totalExp, winner }: { pokemons: Pokemon[], totalExp: number, winner: boolean }) {
-
-
-  return (
-    <div>
-      <h2>POKEDEX</h2>
-      <div className="pokedex">
-      {pokemons.map((pokemon) => (
-        <PokeCard pokeData={pokemon} />
-      ))}
-      </div>
-      <div>Total experience: {totalExp}</div>
-      {winner ? 
-      (<>Winner</>) 
-      : 
-      (<>You are a loser</>)}
-    </div>
-  );
-}
-
-function PokeCard({
-  pokeData: { id, name, type, base_experience },
-}: {
-  pokeData: Pokemon;
-}) {
-  return (
-    <article className="pokecard">
-      <div>{name}</div>
-      <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        alt="Pokemon img"
-      />
-      <div>Type: {type}</div>
-      <div>EXP: {base_experience}</div>
-    </article>
   );
 }
 
