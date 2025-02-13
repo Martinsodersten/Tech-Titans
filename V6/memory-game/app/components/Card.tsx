@@ -2,18 +2,21 @@ import CardType from "../types/CardType";
 
 const Card = ({ card, clickEvent }: { card: CardType, clickEvent:Function}) => {
   return (
+    <div className="card-wrapper">
     <div
+    className={card.revealed ? "revealed" : "unrevealed"}
       style={{
-        border: "1px solid black",
+        backgroundColor:"#00FF00",
         width: "100px",
         height: "100px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
-      onClick={() => clickEvent(card)}
+      onClick={(e) => clickEvent(card, e.target)}
     >
       {card.revealed ? card.value : <></>}
+    </div>
     </div>
   );
 };
