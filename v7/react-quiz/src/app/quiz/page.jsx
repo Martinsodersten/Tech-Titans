@@ -24,32 +24,22 @@ export default function QuizPage() {
   }
 
   return (
-    <main className="w-full px-8 h-3/5 mt-12 flex flex-col justify-between">
+    <section className="w-full px-8 h-3/5 mt-12 flex flex-col justify-between">
       <h1 className="text-center text-lg font-bold w-full">
-        {question.question}
+        {questions[currentQuestion].question}
       </h1>
     
       {currentQuestion < questions.length
       ? <div className="w-full h-32 grid grid-cols-2 gap-1">
-          {questions[currentQuestion].question}
           {questions[currentQuestion].answers.map((answer, index) =>
-          <div key={index}>
-            <input
-              type="radio"
-              id={`answer${index}`}
-              name="answer"
-              value={answer}
-              onChange={() => setSelectedAnswer(answer)}
-              className="w-full hover:opacity-90 rounded-md text-xs text-white font-medium border-b-4 bg-red-500 border-red-600"
-            />
-            <label htmlFor={`answer${index}`}>{answer}</label>
-          </div>
+            <button key={index} onClick={() => setSelectedAnswer(answer)} className="w-full hover:opacity-90 rounded-md text-xs text-white font-medium border-b-4 bg-red-500 border-red-600">
+              {answer}
+            </button>
           )}
           <button onClick={() => handleNextQuestion(selectedAnswer)}>Next question</button>
         </div>
       : <p>Färdigt!</p>
     }
-      
-    </main>
+    </section>
   )
 }
