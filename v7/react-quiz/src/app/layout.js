@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { QuizContextProvider } from "@/context/quizContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main className="container h-svh mx-auto flex justify-center">
+          <QuizContextProvider>{children}</QuizContextProvider>
+        </main>
       </body>
     </html>
   );
