@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, use, useState, useEffect } from "react";
 
 const mockData = [
   {
@@ -28,10 +28,24 @@ const mockData = [
     correctAnswer: "Helsinki",
   },
 ];
+
+const localStorageData = JSON.parse(localStorage.getItem("questions"));
+let q;
+
+if (localStorageData) {
+  q = localStorageData;
+} else {
+  q = mockData;
+}
+
 export const QuizContext = createContext({ mockData, undefined });
 
 export function QuizContextProvider({ children }) {
-  const [questions, setQuestions] = useState(mockData);
+  const [questions, setQuestions] = useState(q);
+
+  useEffect(() => {
+    localStorage.setItem("questions", JSON.stringify(questions));
+  }, [questions]);
 
   return (
     <QuizContext.Provider value={{ questions, setQuestions }}>
