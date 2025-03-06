@@ -29,6 +29,7 @@ app.listen(3000, () => {
 });
 
 app.post("/users", async (req, res) => {
+  console.log(req.body)
   const { username, password } = req.body;
   const result = await query(
     "INSERT INTO users (username, password) VALUES (?, ?)",

@@ -6,8 +6,8 @@ function CreateUserPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSignUp = async () => {
-
+    const handleSignUp = async (e: React.FormEvent) => {
+        e.preventDefault();
         try {
             const response = await fetch('http://localhost:3000/users', {
                 method: 'POST',
@@ -22,7 +22,7 @@ function CreateUserPage() {
             if(response.ok) {
                 const data = await response.json();
                 console.log("response ok", data);
-                alert(`User ${data.user.username} created and account with balance ${data.account.balance} created`);
+                alert(`User ${data.username} created and account with balance ${data.account.balance} created`);
             } else {
                 throw new Error('Fel användarnamn eller lösenord');
             }
@@ -56,7 +56,7 @@ function CreateUserPage() {
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
         </label>
-        <button onClick={handleSignUp} className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+        <button onClick={(e) => handleSignUp(e)} className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
            Skapa användare
             </button>
       </form>

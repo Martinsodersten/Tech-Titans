@@ -1,6 +1,7 @@
 import {Request, Response } from "express"
 import { query } from "./../config/db"
 import { User, Post } from "./../types"
+import {prisma} from "../index"
 
 
 // CREATE
@@ -8,31 +9,20 @@ export const createPostByUser = async (req: Request, res: Response) => {
 
     const { title, content, userId } = req.body;
     // TODO: När vi har authentiserin gpå plats (JWT) ska vi hämta userId därifrån istället
-
-
-    try {
-
-        const userExists = await query<User[]>(
-            "SELECT * FROM users WHERE id = ?",
-            [userId]
-        )
-
-        if(userExists.length === 0) {
-            res.status(404).json({error: "User not found"})
-            return;
-        }
-      
-        const result = await query<Post[]>(
-            "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)",
-            [title, content, userId]
-        )
-
-        res.status(201).json({ message: "Post created successfully", post: result})
-
-    } catch(error) {
-        res.status(500).json({error: "Internal Server error"});
-
-    }
+ 
+   try {
+     const response = await prisma.post.create({
+       data: {
+         title: title,
+         content: content,
+         userId: userId
+       },
+     });
+     console.log(response);
+     res.status(200).json({ title: response.title });
+   } catch (error) {
+     res.status(500).json({ error: "Internal server error" });
+   }
 
 };
 
@@ -44,41 +34,31 @@ export const getPostsByUser = async (req: Request, res: Response) => {
     // TODO: ersätt i auth-hantering
 
     try {
-
-        const result = await query<Post[]>(
-            "SELECT * FROM posts WHERE user_id = ?",
-            [userId]
-        )
-
-        res.status(200).json({message: "Posts fetched successfully", result: result});
-      
-
-    } catch(error) {
-        res.status(500).json({error: "Internal Server error"});
-
-    }
+        const user = await prisma.post.findMany({
+          where: { userId: userId },
+        });
+        res.status(200).json({ user });
+      } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+      }
 
 };
 
 // READ ONE
 export const getPostByUser = async (req: Request, res: Response) => {
 
-      const { postId } = req.params;
-      const { userId } = req.body;   // TODO: ersätt i auth-hantering
-
+    const { postId } = req.params
+    const { userId } = req.body;
+    // TODO: ersätt i auth-hantering
 
     try {
-      const result = await query<Post[]>(
-        "SELECT * FROM posts WHERE user_id = ? AND id = ?",
-        [userId, postId]
-      )
-
-      res.status(200).json({message: "Post fetched successfully", result: result})
-
-    } catch(error) {
-        res.status(500).json({error: "Internal Server error"});
-
-    }
+        const user = await prisma.post.findUnique({
+          where: { userId: userId, id:Number(postId) },
+        });
+        res.status(200).json({ user });
+      } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+      }
 
 };
 
@@ -87,21 +67,17 @@ export const updatePostByUser = async (req: Request, res: Response) => {
 
 
     const { postId } = req.params;
-    const { title, content, userId } = req.body;   // TODO: ersätt i auth-hantering
+    const { title, content } = req.body;   // TODO: ersätt i auth-hantering
 
     try {
-      
-        const result = await query<Post[]>(
-            "UPDATE posts SET title = ?, content = ? WHERE user_id = ? AND id = ?",
-            [ title, content,  userId, postId]
-        )
-
-        res.status(200).json({message: "Post updated successfully"})
-
-    } catch(error) {
-        res.status(500).json({error: "Internal Server error"});
-
-    }
+        const updatedPost = await prisma.post.update({
+          where: { id: Number(postId) },
+          data: {title:title, content: content}
+        });
+        res.status(200).json({ updatedPost });
+      } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+      }
 
 };
 
@@ -110,22 +86,14 @@ export const deletePostByUser = async (req: Request, res: Response) => {
 
 
     const { postId } = req.params;
-    const { userId } = req.body;   // TODO: ersätt i auth-hantering
-
 
     try {
-
-        const result = await query<Post[]>(
-            "DELETE FROM posts WHERE user_id = ? AND id = ?",
-            [userId, postId]
-        )
-
-        res.status(200).json({ message: "Post deleted successfully"})
-      
-
-    } catch(error) {
-        res.status(500).json({error: "Internal Server error"});
-
-    }
+        const user = await prisma.post.delete({
+          where: { id: Number(postId) },
+        });
+        res.status(200).json({ user });
+      } catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+      }
 
 };

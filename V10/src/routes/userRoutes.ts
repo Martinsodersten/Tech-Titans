@@ -7,9 +7,9 @@ const router = express.Router()
 // CRUD för en resurs users
 router.post("/", createUser);
 router.get("/", getUsers);
-router.get("/:id", getUser);
-router.put("/:id", updateUser);
-router.delete("/:id", deleteUser);
+router.get("/:username", getUser);
+router.put("/", updateUser);
+router.delete("/", deleteUser);
 
 
 
