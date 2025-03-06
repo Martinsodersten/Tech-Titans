@@ -42,6 +42,42 @@ app.get("/users", async (req, res) => {
   res.send(users);
 });
 
+
+app.post("/sessions", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = (await query("SELECT * FROM users WHERE username = ?", [username]) as Array<Object>)[0] as User;
+ 
+  console.log(user)
+  if (user.password === password) {
+    const generatedToken = generateOTP() 
+    console.log(generatedToken)
+
+    const result = await query(
+      "INSERT INTO sessions (username, token) VALUES (?, ?)",
+      [username, generatedToken]
+    );
+
+    res.status(200).send(generatedToken)
+  } 
+  else {
+    res.status(401).send("Incorrect username or password")
+  }
+});
+
+app.get("/sessions", (req, res) => {
+  res.send(sessions)
+});
+
+// Databas uppkoppling
+const pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "password",
+  database: "banksajt",
+  port: 3306, // Obs! 3306 för windowsanvändare
+});
+
 app.post("/accounts", (req, res) => {
   const {amount, token } = req.body;
   const foundSession = sessions.find((session) => session.token === token) 
@@ -64,29 +100,6 @@ app.get("/accounts", (req, res) => {
   res.send("No token found")
 });
 
-app.post("/sessions", (req, res) => {
-  const { username, password } = req.body;
-  if (users.find((user) => user.username === username)?.password === password) {
-    const generatedToken = generateOTP() 
-    console.log(generatedToken)
-    sessions.push({ username: username, token: generatedToken });
-    res.status(200).send(generatedToken)
-  } 
-  res.status(401).send("Incorrect username or password")
-});
-
-app.get("/sessions", (req, res) => {
-  res.send(sessions)
-});
-
-// Databas uppkoppling
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "banksajt",
-  port: 3306, // Obs! 3306 för windowsanvändare
-});
 
 // Funktion för att göra förfrågan till databas
 async function query(sql: any, params: any) {
